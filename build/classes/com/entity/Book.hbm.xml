@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
+    
+    <hibernate-mapping  package="com.entity"><!-- 实体类所在的包名 -->
+           <class  name="Book" table="t_book">
+           <!-- 订单列表和订单是共享主键 -->
+             <id  name="bookId">            
+                  <generator class="native"></generator>
+             </id>
+               <property name="bookName"  type="string"></property>
+               <property name="bookPrice"  type="float" ></property>
+               <property name="bookSpecialPrice" ></property>
+               <property name="bookPublicDate" type="date" ></property>
+               <property name="bookAuthor" type="string" ></property>
+               <property name="bookIntroduction"  type="text"></property>
+               <property name="bookPic" type="blob"></property>
+               <property name="classify" ></property>
+              
+           </class>   
+    </hibernate-mapping>

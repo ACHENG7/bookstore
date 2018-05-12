@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<package name="UsersAction" extends="struts-default">
+	
+	 <default-action-ref name="index" />
+	<!--============================登录/注册请求======================================== -->
+	  <action name="login" class="com.action.UserAction" method="login">
+	     <result name="input">/bookstore/login.jsp</result>
+	     <result name="success">/bookstore/index.jsp</result>
+	  </action>
+	  
+	    <action name="logout" class="com.action.UserAction" method="logout">
+	     <result name="success">/bookstore/index.jsp</result>
+	  </action>
+	  
+	  <action name="register" class="com.action.UserAction" method="register">
+	     <result name="input">null</result>
+	     <result name="success">/bookstore/index.jsp</result>
+	  </action>
+	  
+	<!-- =========================浏览/检索请求===================================== -->
+	  <action name="searchBook" class="com.action.BookAction" method="searchBooks">
+	    <result name="input">/bookstore/index.jsp</result>
+	    <result name="success">/bookstore/products.jsp</result>
+	  </action>
+	
+	  <action name="classify_*" class="com.action.BookAction" method="{1}">
+	    <result name="success">/bookstore/products.jsp</result>
+	  </action>
+	  
+	  <action name="detail" class="com.action.BookAction" method="searchBook">
+	     <result name="success">/bookstore/product_details.jsp</result>
+	  </action>
+	  
+	  <!-- ============================用户加购/订单请求============================ -->
+	  
+       <action name="summary" class="com.action.UserAction" method="summary">
+         <result name="success">/bookstore/product_summary.jsp</result>
+	   </action>
+	   
+	  <!--=============================异步刷新请求================================== -->
+	   <action name="addCart" class="com.action.AjaxAction" method="addCart">
+	  </action>
+	  
+	   <action name="validateUserName" class="com.action.AjaxAction" method="validateUserName">
+	   </action>
+	      
+	
+	   
+	   <action name="index" class="com.action.Init" method="init">
+	     <result name="success">/bookstore/index.jsp</result>
+	   </action>
+	   
+
+  
+	</package>
+   
+
+</struts>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
+    
+    <hibernate-mapping  package="com.entity"><!-- 实体类所在的包名 -->
+           <class  name="CartItem" table="t_cartitem">
+             <id  name="cartId">
+                  <generator class="native"></generator>           
+             </id> 
+                    
+               <property name="quantity"  type="integer" ></property>
+               
+               <!-- 订单列表和书 1:n-->
+           
+                    <many-to-one name="bookId" class="com.entity.Book">
+                      <column name="bookId"  not-null="true"></column>
+                  </many-to-one>
+                  
+                     <many-to-one name="userId" class="com.entity.UserInfo">
+                      <column name="userId"  not-null="true"></column>
+                  </many-to-one>
+               
+               <!-- 订单列表与订单1：1外键约束
+                  orderItem表的主键是itemid，外键有bookid，orderid
+               -->
+               
+                
+           </class>   
+    </hibernate-mapping>
